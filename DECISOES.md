@@ -73,3 +73,11 @@
 **Motivo:** separa o domínio interno da futura API HTTP e evita que a interface dependa diretamente de dataclasses Python. O serializer não arredonda valores; apresentação e formatação monetária pertencem à camada de interface.
 
 **Impacto:** qualquer alteração incompatível deve criar uma nova versão de schema e manter o contrato anterior durante uma transição documentada.
+
+## 02/09/2026 — API HTTP mínima sobre fixture autorizada
+
+**Decisão:** `backend/api.py` expõe `POST /backtest` usando apenas a biblioteca padrão. A requisição é convertida pelo adaptador existente, executa a estratégia causal sobre `data/sample_ohlcv.csv` e devolve o schema JSON `1`.
+
+**Motivo:** cria um limite HTTP testável sem introduzir framework, rede externa, autenticação ou risco de consulta arbitrária ao filesystem. A fonte é comparada após resolução de caminho e qualquer outra é rejeitada.
+
+**Impacto:** a API é deliberadamente local e demonstrativa. Antes de aceitar dados reais, será necessário definir autenticação, limites de payload, observabilidade, licenciamento da fonte e uma política de execução.
