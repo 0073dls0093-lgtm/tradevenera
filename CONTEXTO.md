@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: fluxo local completo validado com fixture OHLCV
+- Fase atual: resultado do backtest serializável e versionado
 
 ## Objetivo atual
 
@@ -29,6 +29,8 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Leitor CSV sem dependências criado em `backend/fixture.py`.
 - Fixture pequena e autorizada criada em `data/sample_ohlcv.csv`.
 - Teste integrado criado em `tests/test_fixture.py`, ligando fixture, adaptador, estratégia e executor.
+- Serializador versionado criado em `backend/serialization.py`, com resumo, operações e timestamps ISO-8601.
+- Testes de contrato JSON criados em `tests/test_serialization.py`.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 
 ## Testado e funcionando
@@ -37,7 +39,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
-- Suíte local executada em ambiente virtual: 15 testes aprovados.
+- Suíte local executada em ambiente virtual: 17 testes aprovados.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 
 ## Planejado, mas ainda não implementado
@@ -65,7 +67,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Conectar o fluxo local à interface estática, exibindo métricas da fixture e mantendo o estado vazio quando não houver dados.
+- Criar a API HTTP mínima que receba configuração, rode somente a fixture autorizada e devolva o payload versionado.
 
 ## Ideias sugeridas pela IA
 
@@ -84,3 +86,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada estratégia causal de cruzamento de médias móveis | 11 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criado adaptador textual para BacktestConfig | 14 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criado leitor CSV e fluxo integrado com fixture OHLCV pequena | 15 testes aprovados com pytest |
+| 02/09/2026 | IA Manus | Criado contrato JSON versionado para resultados do backtest | 17 testes aprovados com pytest |

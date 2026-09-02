@@ -65,3 +65,11 @@
 **Motivo:** permite testar o fluxo completo sem depender de rede, credenciais, licença de dados ou disponibilidade de provedor. O arquivo é explicitamente uma fixture, não histórico de mercado para decisão.
 
 **Impacto:** o leitor exige cabeçalho OHLCV, timezone e timestamps crescentes. Dados reais e integrações externas permanecem fora do escopo desta etapa.
+
+## 02/09/2026 — Payload de resultado versionado
+
+**Decisão:** resultados serão expostos por `backend/serialization.py` no schema `1`, com os campos `summary` e `trades`. Timestamps usam ISO-8601 e a serialização JSON é ordenada e compacta para facilitar testes e logs.
+
+**Motivo:** separa o domínio interno da futura API HTTP e evita que a interface dependa diretamente de dataclasses Python. O serializer não arredonda valores; apresentação e formatação monetária pertencem à camada de interface.
+
+**Impacto:** qualquer alteração incompatível deve criar uma nova versão de schema e manter o contrato anterior durante uma transição documentada.
