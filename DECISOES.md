@@ -49,3 +49,19 @@
 **Motivo:** reduz acoplamento e permite testar a causalidade da estratégia separadamente. O exemplo inicial usa cruzamento de médias móveis e não consulta candles posteriores ao índice.
 
 **Impacto:** `backend/strategies.py` é demonstrativo, não uma recomendação de investimento. Parâmetros, persistência e seleção na interface serão integrados em etapa posterior.
+
+## 02/09/2026 — Adaptador textual para configuração
+
+**Decisão:** campos vindos da interface são convertidos em `BacktestConfig` por `backend/configuration.py`, com parsing explícito de ISO dates, horários, inteiros, floats e enums.
+
+**Motivo:** a tela não deve duplicar regras de domínio nem aceitar valores inválidos silenciosamente. O adaptador falha com `ValidationError` antes de qualquer execução.
+
+**Impacto:** o fluxo ainda não consulta dados externos e não persiste configurações. A próxima etapa pode usar uma fixture local pequena para ligar formulário, executor e métricas.
+
+## 02/09/2026 — Fixture CSV pequena para integração local
+
+**Decisão:** a primeira integração usa somente `data/sample_ohlcv.csv`, com seis barras sintéticas e timestamps UTC, lidas por `backend/fixture.py`.
+
+**Motivo:** permite testar o fluxo completo sem depender de rede, credenciais, licença de dados ou disponibilidade de provedor. O arquivo é explicitamente uma fixture, não histórico de mercado para decisão.
+
+**Impacto:** o leitor exige cabeçalho OHLCV, timezone e timestamps crescentes. Dados reais e integrações externas permanecem fora do escopo desta etapa.

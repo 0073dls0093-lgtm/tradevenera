@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: executor determinístico + estratégia causal de exemplo
+- Fase atual: fluxo local completo validado com fixture OHLCV
 
 ## Objetivo atual
 
@@ -24,6 +24,11 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Testes do executor criados em `tests/test_backtest.py`.
 - Estratégia de cruzamento de médias móveis criada em `backend/strategies.py`, usando apenas candles disponíveis até o índice do sinal.
 - Testes da estratégia criados em `tests/test_strategies.py`.
+- Adaptador textual para `BacktestConfig` criado em `backend/configuration.py`, com enums, datas, horários e números validados.
+- Testes do adaptador criados em `tests/test_configuration.py`.
+- Leitor CSV sem dependências criado em `backend/fixture.py`.
+- Fixture pequena e autorizada criada em `data/sample_ohlcv.csv`.
+- Teste integrado criado em `tests/test_fixture.py`, ligando fixture, adaptador, estratégia e executor.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 
 ## Testado e funcionando
@@ -32,7 +37,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
-- Suíte local executada em ambiente virtual: 11 testes aprovados.
+- Suíte local executada em ambiente virtual: 15 testes aprovados.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 
 ## Planejado, mas ainda não implementado
@@ -60,7 +65,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Criar um adaptador de entrada para a tela de configuração, ainda usando somente dados OHLCV fornecidos pelo usuário ou fixture autorizada.
+- Conectar o fluxo local à interface estática, exibindo métricas da fixture e mantendo o estado vazio quando não houver dados.
 
 ## Ideias sugeridas pela IA
 
@@ -77,3 +82,5 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criado contrato OHLCV/configuração e testes unitários | 6 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criado executor determinístico long-only com custos e política de candle ambíguo | 9 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criada estratégia causal de cruzamento de médias móveis | 11 testes aprovados com pytest |
+| 02/09/2026 | IA Manus | Criado adaptador textual para BacktestConfig | 14 testes aprovados com pytest |
+| 02/09/2026 | IA Manus | Criado leitor CSV e fluxo integrado com fixture OHLCV pequena | 15 testes aprovados com pytest |
