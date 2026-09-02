@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: fundação + primeira home visual
+- Fase atual: home visual + tela de configuração inicial
 
 ## Objetivo atual
 
@@ -17,6 +17,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Identidade visual inicial: fundo azul-marinho, acento verde-lima, tipografia Space Grotesk + DM Sans.
 - Estado vazio explícito para painel de análise, métricas e curva de patrimônio.
 - Interações de navegação e CTAs mostram aviso de funcionalidade futura, sem simular dados de mercado.
+- Tela `/configurar` criada no preview React com campos de ativo, timeframe, período, custos e estados futuros de estratégia.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 
 ## Testado e funcionando
@@ -24,6 +25,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Repositório oficial consultado e atualizado em commits incrementais.
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
+- Fluxo home → `/configurar` validado no preview.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 
 ## Planejado, mas ainda não implementado
@@ -51,7 +53,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Definir o modelo de dados OHLCV e implementar a validação de configuração do backtest, acompanhada de testes unitários. Em paralelo, organizar a página de configuração sem conectar dados externos.
+- Definir o modelo de dados OHLCV e implementar a validação de configuração do backtest, acompanhada de testes unitários. Em paralelo, espelhar a tela de configuração no frontend estático publicado.
 
 ## Ideias sugeridas pela IA
 
@@ -64,3 +66,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 |---|---|---|---|
 | 02/09/2026 | IA Manus | Criada estrutura inicial e documentação | Validação estrutural local |
 | 02/09/2026 | IA Manus | Criada a primeira home visual e espelhada em `frontend/index.html` | Preview sem erros; screenshot validado |
+| 02/09/2026 | IA Manus | Criada tela `/configurar` no preview com parâmetros explícitos e estado seguro | Verificação de TypeScript/LSP pendente após HMR |
