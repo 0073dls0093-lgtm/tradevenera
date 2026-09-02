@@ -31,6 +31,9 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 class BacktestHandler(BaseHTTPRequestHandler):
+    def do_OPTIONS(self) -> None:  # noqa: N802
+        self._send(204, {})
+
     def do_POST(self) -> None:  # noqa: N802
         if self.path != "/backtest":
             self._send(404, {"error": "rota não encontrada"})
@@ -47,10 +50,14 @@ class BacktestHandler(BaseHTTPRequestHandler):
     def _send(self, status: int, payload: dict[str, Any]) -> None:
         body = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
         self.send_response(status)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
-        self.wfile.write(body)
+        if status != 204:
+            self.wfile.write(body)
 
     def log_message(self, *_args: object) -> None:
         return
