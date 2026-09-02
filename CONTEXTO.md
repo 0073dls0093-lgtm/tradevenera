@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: home visual + tela de configuração inicial
+- Fase atual: primeiro executor determinístico validado
 
 ## Objetivo atual
 
@@ -18,6 +18,10 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Estado vazio explícito para painel de análise, métricas e curva de patrimônio.
 - Interações de navegação e CTAs mostram aviso de funcionalidade futura, sem simular dados de mercado.
 - Tela `/configurar` criada no preview React com campos de ativo, timeframe, período, custos e estados futuros de estratégia.
+- Contrato Python criado em `backend/domain.py` para barras OHLCV e `BacktestConfig`, com validações de timezone, preços, período, sessão, custos e regras obrigatórias.
+- Testes de domínio criados em `tests/test_domain.py`.
+- Executor inicial criado em `backend/backtest.py`: long-only, entrada no candle seguinte, stop/alvo, custos e política de conflito no mesmo candle.
+- Testes do executor criados em `tests/test_backtest.py`.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 
 ## Testado e funcionando
@@ -26,6 +30,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
+- Suíte local executada em ambiente virtual: 9 testes aprovados.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 
 ## Planejado, mas ainda não implementado
@@ -53,7 +58,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Definir o modelo de dados OHLCV e implementar a validação de configuração do backtest, acompanhada de testes unitários. Em paralelo, espelhar a tela de configuração no frontend estático publicado.
+- Criar um adaptador de entrada para a tela de configuração e uma estratégia de exemplo explícita, ainda usando somente dados OHLCV fornecidos pelo usuário ou fixture autorizada.
 
 ## Ideias sugeridas pela IA
 
@@ -67,3 +72,5 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada estrutura inicial e documentação | Validação estrutural local |
 | 02/09/2026 | IA Manus | Criada a primeira home visual e espelhada em `frontend/index.html` | Preview sem erros; screenshot validado |
 | 02/09/2026 | IA Manus | Criada tela `/configurar` no preview com parâmetros explícitos e estado seguro | Verificação de TypeScript/LSP pendente após HMR |
+| 02/09/2026 | IA Manus | Criado contrato OHLCV/configuração e testes unitários | 6 testes aprovados com pytest |
+| 02/09/2026 | IA Manus | Criado executor determinístico long-only com custos e política de candle ambíguo | 9 testes aprovados com pytest |

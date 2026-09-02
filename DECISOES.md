@@ -25,3 +25,19 @@
 **Motivo:** evita que a interface crie a impressão de que dados ou resultados financeiros já estão disponíveis. Também transforma os requisitos obrigatórios da especificação em um contrato verificável para a próxima etapa.
 
 **Impacto:** a tela `/configurar` usa apenas estado local no preview; a validação real e a persistência ficam bloqueadas até o modelo OHLCV e o motor determinístico serem definidos.
+
+## 02/09/2026 — Contrato de domínio sem dependências externas
+
+**Decisão:** representar OHLCV e configuração de backtest com dataclasses Python e validação explícita, antes de escolher provedor de dados ou framework de execução.
+
+**Motivo:** mantém o núcleo determinístico, testável e independente de rede. Também permite rejeitar dados incompatíveis e configurações incompletas antes de qualquer cálculo.
+
+**Impacto:** `backend/domain.py` é a fonte inicial do contrato; os testes cobrem seis casos essenciais. Persistência, API, provedor e execução de estratégia permanecem como etapas seguintes.
+
+## 02/09/2026 — Execução long-only determinística inicial
+
+**Decisão:** o primeiro executor aceita barras OHLCV normalizadas e uma função de sinal, abre no candle seguinte ao sinal, aplica slippage e encerra por stop, alvo ou fim dos dados.
+
+**Motivo:** a regra de entrada no candle seguinte reduz look-ahead bias e a função de sinal mantém a estratégia separada do executor. A política explícita de candle ambíguo evita resultados silenciosamente diferentes.
+
+**Impacto:** `backend/backtest.py` calcula operações, resultado bruto, custos, líquido, gains, losses e drawdown. Não há fonte externa, persistência ou execução real.
