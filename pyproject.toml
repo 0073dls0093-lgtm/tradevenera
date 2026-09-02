@@ -1,0 +1,14 @@
+[project]
+name = "tradevenera"
+version = "0.1.0"
+description = "Backtest educativo e histórico para estratégias de mercado"
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0,<9.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
