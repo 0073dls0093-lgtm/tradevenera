@@ -1,0 +1,64 @@
+"""API HTTP mínima para executar somente a fixture local autorizada."""
+import json
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
+from typing import Any
+
+from .backtest import run_backtest
+from .configuration import build_config
+from .fixture import load_ohlcv_csv
+from .serialization import result_payload
+from .strategies import moving_average_cross_signal
+
+ROOT = Path(__file__).parents[1]
+ALLOWED_FIXTURE = (ROOT / "data" / "sample_ohlcv.csv").resolve()
+
+
+def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
+    """Executa uma requisição validada e devolve um payload JSON serializável."""
+    source = (payload.get("data_source") or "").strip()
+    requested = (ROOT / source).resolve()
+    if requested != ALLOWED_FIXTURE:
+        raise ValueError("esta API inicial aceita somente data/sample_ohlcv.csv")
+    config = build_config(payload)
+    bars = load_ohlcv_csv(requested)
+    result = run_backtest(
+        bars,
+        config,
+        lambda index, history: moving_average_cross_signal(index, history, fast=2, slow=3),
+    )
+    return result_payload(result)
+
+
+class BacktestHandler(BaseHTTPRequestHandler):
+    def do_POST(self) -> None:  # noqa: N802
+        if self.path != "/backtest":
+            self._send(404, {"error": "rota não encontrada"})
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            payload = json.loads(self.rfile.read(length))
+            response = execute_backtest(payload)
+        except (ValueError, TypeError, json.JSONDecodeError) as exc:
+            self._send(400, {"error": str(exc)})
+            return
+        self._send(200, response)
+
+    def _send(self, status: int, payload: dict[str, Any]) -> None:
+        body = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, *_args: object) -> None:
+        return
+
+
+def serve(host: str = "127.0.0.1", port: int = 8000) -> None:
+    HTTPServer((host, port), BacktestHandler).serve_forever()
+
+
+if __name__ == "__main__":
+    serve()
