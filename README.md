@@ -6,35 +6,35 @@ Aplicação educativa para análise histórica e backtesting de estratégias de 
 
 ## Status
 
-A fundação documental e a primeira home visual já foram criadas. A página estática em `frontend/index.html` apresenta a proposta do produto, o estado vazio do painel de análise e os limites da primeira versão. O motor de backtest, a fonte de dados e a interface de configuração ainda não foram implementados.
+A fundação documental, a home visual, a tela de configuração, o domínio de backtest, o executor determinístico, a estratégia causal, a fixture OHLCV, a serialização JSON versionada e uma API HTTP local mínima já foram implementados e testados. A configuração estática em `frontend/configurar.html` agora envia parâmetros à API local e apresenta estados de carregamento, sucesso e erro.
 
 ## Estrutura
 
 - `CONTEXTO.md`: estado factual do projeto e próxima tarefa.
-- `AI_INSTRUCTIONS.md`: regras para agentes e colaboradores.
+- `AI_INSTRUCTIONS.md`: regras para agentes e colaboradores sequenciais.
 - `docs/ESPECIFICACAO.md`: escopo e requisitos da primeira versão.
 - `docs/DECISOES.md`: decisões técnicas registradas.
-- `frontend/index.html`: primeira entrega visual estática, sem backend.
-- `backend/`: futura API e domínio de backtesting.
+- `frontend/index.html`: primeira entrega visual estática.
+- `frontend/configurar.html`: tela estática de configuração conectada à API local.
+- `backend/`: domínio, executor, fixture, serializer e API HTTP.
 - `data/`: somente amostras pequenas e autorizadas.
 - `tests/`: testes automatizados.
 
-## Como visualizar a home
+## Como visualizar a home e executar a prévia local
 
-A página pode ser aberta diretamente no navegador ou servida por qualquer servidor HTTP estático. Por exemplo:
+Em um terminal, inicie a API a partir da raiz do projeto:
+
+```bash
+python3 -m backend.api
+```
+
+Em outro terminal, sirva o frontend estático:
 
 ```bash
 python3 -m http.server 8080 --directory frontend
 ```
 
-Depois, acesse `http://localhost:8080`.
-
-## Próximos passos
-
-1. Definir o modelo de dados OHLCV e o contrato de entrada da API.
-2. Implementar um motor determinístico de backtest com custos, slippage e regras explícitas.
-3. Adicionar dados de exemplo pequenos e testes de casos-limite.
-4. Criar a tela de configuração e conectar a home ao fluxo real.
+Depois, acesse `http://localhost:8080/configurar.html`. A API aceita somente `data/sample_ohlcv.csv`; não consulta dados reais nem corretoras.
 
 ## Regras de segurança
 

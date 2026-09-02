@@ -47,17 +47,17 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Planejado, mas ainda não implementado
 
-- Publicar e organizar todos os documentos em `docs/` no GitHub.
-- Motor de backtest.
-- API HTTP.
-- Importação/validação de dados OHLCV.
-- Cálculo de gains, losses, resultado líquido e drawdown.
-- Configuração real de estratégia e seletor de ativo.
-- Testes automatizados do domínio.
+- Escolher e documentar uma fonte autorizada de dados reais.
+- Importar dados reais da B3 com granularidade adequada ao WIN.
+- Definir tratamento de vencimentos e rolagem dos contratos WIN.
+- Implementar gráfico real com candles e marcações de entrada e saída.
+- Adicionar a estratégia de máxima e mínima do dia anterior.
+- Adicionar validação fora da amostra.
+- Criar telas completas para comparação de estratégias.
 
 ## Dados e limitações
 
-- Fonte dos dados: ainda não definida.
+- Fonte dos dados reais: ainda não definida; a API atual aceita somente a fixture sintética autorizada.
 - Granularidade: ainda não definida.
 - Não há dados de mercado versionados.
 - A home usa somente estados vazios e uma linha visual ilustrativa; não apresenta resultado financeiro real.
@@ -66,11 +66,12 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 ## Problemas conhecidos
 
 - O push via Git local não está autorizado pelo token de terminal; os commits desta etapa são publicados pela sessão autenticada do GitHub.
-- A implementação React do preview e a página estática do repositório são equivalentes na intenção, mas ainda não compartilham um pipeline de build.
+- A implementação React do preview e a página estática do repositório ainda não compartilham um pipeline de build.
+- A conexão frontend → API depende de executar a API local em `127.0.0.1:8000`; não é uma API pública.
 
 ## Próxima tarefa sugerida
 
-- Conectar a tela de configuração ao endpoint local, com estados de carregamento, sucesso e erro.
+- Escolher e documentar uma fonte autorizada de dados reais, sem implementá-la automaticamente.
 
 ## Ideias sugeridas pela IA
 
@@ -91,3 +92,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criado leitor CSV e fluxo integrado com fixture OHLCV pequena | 15 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criado contrato JSON versionado para resultados do backtest | 17 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criada API HTTP mínima com fonte de dados autorizada | 19 testes aprovados com pytest |
+| 02/09/2026 | IA Manus | Corrigida a lista de pendências e conectada a tela estática à API local, com loading, sucesso e erro | 4 testes direcionados + smoke test HTTP aprovados |
