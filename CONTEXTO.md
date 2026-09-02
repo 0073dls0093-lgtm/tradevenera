@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: fundação do projeto
+- Fase atual: fundação + primeira home visual
 
 ## Objetivo atual
 
@@ -12,46 +12,55 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Implementado atualmente
 
-- Estrutura inicial de diretórios.
-- Documentação de visão, escopo, regras mínimas e fluxo de trabalho entre IAs.
-- Política inicial de segurança e proteção de dados sensíveis.
+- Estrutura inicial de diretórios e documentação de continuidade.
+- Página inicial estática em `frontend/index.html`, responsiva e sem dependências de backend.
+- Identidade visual inicial: fundo azul-marinho, acento verde-lima, tipografia Space Grotesk + DM Sans.
+- Estado vazio explícito para painel de análise, métricas e curva de patrimônio.
+- Interações de navegação e CTAs mostram aviso de funcionalidade futura, sem simular dados de mercado.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 
 ## Testado e funcionando
 
-- Repositório clonado com sucesso.
-- Arquivos iniciais validados localmente antes do primeiro commit.
+- Repositório oficial consultado e atualizado em commits incrementais.
+- Preview React do WebDev executado sem erros de TypeScript ou LSP.
+- Home visual validada por screenshot no preview.
+- Arquivo estático principal validado localmente quanto à existência e conteúdo.
 
 ## Planejado, mas ainda não implementado
 
+- Publicar e organizar todos os documentos em `docs/` no GitHub.
 - Motor de backtest.
 - API HTTP.
-- Interface web e gráfico de candles.
 - Importação/validação de dados OHLCV.
 - Cálculo de gains, losses, resultado líquido e drawdown.
+- Configuração real de estratégia e seletor de ativo.
 - Testes automatizados do domínio.
 
 ## Dados e limitações
 
 - Fonte dos dados: ainda não definida.
 - Granularidade: ainda não definida.
-- Não há dados de mercado versionados neste commit.
+- Não há dados de mercado versionados.
+- A home usa somente estados vazios e uma linha visual ilustrativa; não apresenta resultado financeiro real.
 - Contrato, vencimento, custos e política de rolagem ainda precisam ser definidos antes de resultados financeiros serem calculados.
 
 ## Problemas conhecidos
 
-- Nenhum problema conhecido na estrutura inicial.
+- O push via Git local não está autorizado pelo token de terminal; os commits desta etapa são publicados pela sessão autenticada do GitHub.
+- A implementação React do preview e a página estática do repositório são equivalentes na intenção, mas ainda não compartilham um pipeline de build.
 
 ## Próxima tarefa sugerida
 
-- Definir o modelo de dados OHLCV e implementar a validação de configuração do backtest, acompanhada de testes unitários.
+- Definir o modelo de dados OHLCV e implementar a validação de configuração do backtest, acompanhada de testes unitários. Em paralelo, organizar a página de configuração sem conectar dados externos.
 
 ## Ideias sugeridas pela IA
 
 - Manter o primeiro motor de backtest determinístico e independente da fonte de dados. Benefício: facilita testes e troca de provedores. Custo: exige uma camada explícita de normalização. Status: aguardando decisão.
+- Consolidar a implementação de produção em um único pipeline depois que a estrutura do domínio estiver definida. Benefício: evita divergência entre preview e repositório. Custo: uma pequena migração da página estática. Status: aguardando decisão.
 
 ## Histórico resumido
 
 | Data | Responsável | Alterações | Testes |
 |---|---|---|---|
-| 02/09/2026 | IA Manus | Criada a estrutura inicial e documentação do projeto | Validação estrutural local |
+| 02/09/2026 | IA Manus | Criada estrutura inicial e documentação | Validação estrutural local |
+| 02/09/2026 | IA Manus | Criada a primeira home visual e espelhada em `frontend/index.html` | Preview sem erros; screenshot validado |
