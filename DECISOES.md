@@ -41,3 +41,11 @@
 **Motivo:** a regra de entrada no candle seguinte reduz look-ahead bias e a função de sinal mantém a estratégia separada do executor. A política explícita de candle ambíguo evita resultados silenciosamente diferentes.
 
 **Impacto:** `backend/backtest.py` calcula operações, resultado bruto, custos, líquido, gains, losses e drawdown. Não há fonte externa, persistência ou execução real.
+
+## 02/09/2026 — Estratégia separada do executor
+
+**Decisão:** estratégias recebem o índice atual e a sequência OHLCV, retornando apenas um sinal booleano; o executor continua responsável por entrada, saída, custos e métricas.
+
+**Motivo:** reduz acoplamento e permite testar a causalidade da estratégia separadamente. O exemplo inicial usa cruzamento de médias móveis e não consulta candles posteriores ao índice.
+
+**Impacto:** `backend/strategies.py` é demonstrativo, não uma recomendação de investimento. Parâmetros, persistência e seleção na interface serão integrados em etapa posterior.

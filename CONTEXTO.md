@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: primeiro executor determinístico validado
+- Fase atual: executor determinístico + estratégia causal de exemplo
 
 ## Objetivo atual
 
@@ -22,6 +22,8 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Testes de domínio criados em `tests/test_domain.py`.
 - Executor inicial criado em `backend/backtest.py`: long-only, entrada no candle seguinte, stop/alvo, custos e política de conflito no mesmo candle.
 - Testes do executor criados em `tests/test_backtest.py`.
+- Estratégia de cruzamento de médias móveis criada em `backend/strategies.py`, usando apenas candles disponíveis até o índice do sinal.
+- Testes da estratégia criados em `tests/test_strategies.py`.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 
 ## Testado e funcionando
@@ -30,7 +32,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
-- Suíte local executada em ambiente virtual: 9 testes aprovados.
+- Suíte local executada em ambiente virtual: 11 testes aprovados.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 
 ## Planejado, mas ainda não implementado
@@ -58,7 +60,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Criar um adaptador de entrada para a tela de configuração e uma estratégia de exemplo explícita, ainda usando somente dados OHLCV fornecidos pelo usuário ou fixture autorizada.
+- Criar um adaptador de entrada para a tela de configuração, ainda usando somente dados OHLCV fornecidos pelo usuário ou fixture autorizada.
 
 ## Ideias sugeridas pela IA
 
@@ -74,3 +76,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada tela `/configurar` no preview com parâmetros explícitos e estado seguro | Verificação de TypeScript/LSP pendente após HMR |
 | 02/09/2026 | IA Manus | Criado contrato OHLCV/configuração e testes unitários | 6 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criado executor determinístico long-only com custos e política de candle ambíguo | 9 testes aprovados com pytest |
+| 02/09/2026 | IA Manus | Criada estratégia causal de cruzamento de médias móveis | 11 testes aprovados com pytest |
