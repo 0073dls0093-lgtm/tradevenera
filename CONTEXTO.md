@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: fonte pública gratuita inicial definida e API HTTP mínima validada
+- Fase atual: adaptador gratuito de liquidações diárias validado e API HTTP mínima validada
 
 ## Objetivo atual
 
@@ -40,6 +40,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Testes de API criados em `tests/test_api.py`, incluindo rejeição de fonte não autorizada.
 - Configuração inicial de projeto Python no `pyproject.toml`.
 - Documentação oficial centralizada em `docs/DECISOES.md` e `docs/ESPECIFICACAO.md`, sem cópias concorrentes.
+- Adaptador sem dependências em `backend/settlements.py` para registros normalizados de preços de ajuste diários da B3; não converte esses registros em OHLCV.
 
 ## Testado e funcionando
 
@@ -47,13 +48,12 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
-- Suíte local executada em ambiente virtual: 19 testes aprovados.
+- Suíte local executada em ambiente virtual: 18 testes aprovados nesta versão.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 - Limpeza documental verificada com `git ls-files` e busca de referências.
 
 ## Planejado, mas ainda não implementado
 
-- Implementar, sem dependências pagas, um adaptador inicial para dados diários de derivativos publicados publicamente pela B3, após confirmar o formato e os termos de uso.
 - Importar dados reais da B3 com granularidade adequada ao WIN.
 - Definir tratamento de vencimentos e rolagem dos contratos WIN.
 - Implementar gráfico real com candles e marcações de entrada e saída.
@@ -63,7 +63,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Dados e limitações
 
-- Fonte dos dados reais: dados históricos públicos da B3 foram escolhidos como fonte gratuita inicial para derivativos diários, especialmente preços de ajuste; a API atual aceita somente a fixture sintética autorizada.
+- Fonte dos dados reais: dados históricos públicos da B3 foram escolhidos como fonte gratuita inicial para derivativos diários, especialmente preços de ajuste; o adaptador valida registros normalizados, e a API ainda aceita somente a fixture sintética autorizada.
 - Granularidade: ainda não definida.
 - Não há dados de mercado versionados.
 - A home usa somente estados vazios e uma linha visual ilustrativa; não apresenta resultado financeiro real.
@@ -77,7 +77,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Avaliar fonte autorizada para dados reais; concluído: B3 pública e gratuita foi escolhida para dados diários de derivativos. Ela não foi considerada suficiente para candles intradiários do WIN.
+- Importar uma amostra real pública da B3 somente após validar o formato de download, o mapeamento do contrato WIN e os termos de uso; manter a amostra fora do versionamento até essa confirmação.
 
 ## Ideias sugeridas pela IA
 
@@ -103,3 +103,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada a especificação oficial ausente em `docs/` e corrigidas as referências documentais | Verificação estrutural e busca de referências |
 | 02/09/2026 | IA Manus | Documentada a B3 como fonte candidata para derivativos diários, sem importação | Referências oficiais consultadas; implementação não alterada |
 | 02/09/2026 | IA Manus | Fixada a restrição de custo zero e escolhida a fonte pública da B3 para a primeira integração | Documentação atualizada; sem importação |
+| 02/09/2026 | IA Manus | Criado adaptador independente para liquidações diárias normalizadas da B3 | 18 testes aprovados; sem dados reais versionados |

@@ -6,7 +6,7 @@ Aplicação educativa para análise histórica e backtesting de estratégias de 
 
 ## Status
 
-A fundação documental, a home visual, a tela de configuração, o domínio de backtest, o executor determinístico, a estratégia causal, a fixture OHLCV, a serialização JSON versionada e uma API HTTP local mínima já foram implementados e testados. A configuração estática em `frontend/configurar.html` agora envia parâmetros à API local e apresenta estados de carregamento, sucesso e erro.
+A fundação documental, a home visual, a tela de configuração, o domínio de backtest, o executor determinístico, a estratégia causal, a fixture OHLCV, o adaptador validado de liquidações diárias, a serialização JSON versionada e uma API HTTP local mínima já foram implementados e testados. A configuração estática em `frontend/configurar.html` agora envia parâmetros à API local e apresenta estados de carregamento, sucesso e erro.
 
 ## Estrutura
 
@@ -17,6 +17,7 @@ A fundação documental, a home visual, a tela de configuração, o domínio de 
 - `frontend/index.html`: primeira entrega visual estática.
 - `frontend/configurar.html`: tela estática de configuração conectada à API local.
 - `backend/`: domínio, executor, fixture, serializer e API HTTP.
+- `backend/settlements.py`: leitura de registros normalizados de preços de ajuste diários, sem conversão indevida para OHLCV.
 - `data/`: somente amostras pequenas e autorizadas.
 - `tests/`: testes automatizados.
 
