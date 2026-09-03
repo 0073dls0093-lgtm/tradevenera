@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: adaptador gratuito de liquidações diárias validado e API HTTP mínima validada
+- Fase atual: fluxo demonstrativo com ajuste/validação integrado e API HTTP validada
 
 ## Objetivo atual
 
@@ -45,6 +45,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Estratégia causal `previous_day_high_breakout_signal` adicionada: usa somente máximas de dias anteriores e rompe pelo fechamento atual.
 - API e interface permitem selecionar explicitamente `moving_average` ou `previous_day_high` no modo demonstração.
 - Utilitário `backend/validation.py` separa períodos de ajuste e validação fora da amostra sem sobreposição.
+- API retorna resumos separados de ajuste e validação, e a interface os exibe junto do resultado total.
 
 ## Testado e funcionando
 
@@ -56,6 +57,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 - Limpeza documental verificada com `git ls-files` e busca de referências.
 - Suíte e smoke test HTTP executados após a inclusão do gráfico demonstrativo.
+- Suíte local: 27 testes aprovados; smoke test HTTP confirmou o campo `evaluation`.
 
 ## Planejado, mas ainda não implementado
 
@@ -79,7 +81,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Integrar a separação de ajuste/validação ao fluxo de execução e exibir os dois resultados na interface demonstrativa.
+- Criar telas completas para comparação de estratégias.
 
 ## Ideias sugeridas pela IA
 
@@ -111,3 +113,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Adicionada estratégia causal de rompimento da máxima do dia anterior | 20 testes aprovados; somente fixture sintética |
 | 02/09/2026 | IA Manus | Integrada seleção explícita de estratégia na API e interface | 22 testes aprovados; checkpoint publicado |
 | 02/09/2026 | IA Manus | Criada separação contígua e sem sobreposição para validação fora da amostra | 27 testes aprovados; checkpoint publicado |
+| 02/09/2026 | IA Manus | Integrados resultados de ajuste e validação na API e na interface | 27 testes aprovados + smoke HTTP; checkpoint pendente nesta linha |

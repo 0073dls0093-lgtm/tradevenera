@@ -21,6 +21,9 @@ def test_api_executes_authorized_fixture_and_returns_schema_one():
     assert response["demo"]["source"] == "data/sample_ohlcv.csv"
     assert len(response["demo"]["bars"]) == 6
     assert "sintéticos" in response["demo"]["notice"]
+    assert response["evaluation"]["split_index"] == 3
+    assert "net_result" in response["evaluation"]["adjustment"]
+    assert "net_result" in response["evaluation"]["validation"]
 
 
 def test_api_rejects_any_data_source_outside_authorized_fixture():

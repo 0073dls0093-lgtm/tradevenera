@@ -9,6 +9,7 @@ from .configuration import build_config
 from .fixture import load_ohlcv_csv
 from .serialization import result_payload
 from .strategies import moving_average_cross_signal, previous_day_high_breakout_signal
+from .validation import split_out_of_sample
 
 ROOT = Path(__file__).parents[1]
 ALLOWED_FIXTURE = (ROOT / "data" / "sample_ohlcv.csv").resolve()
@@ -30,8 +31,16 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
     else:
         raise ValueError("estratégia não suportada; use moving_average ou previous_day_high")
     result = run_backtest(bars, config, signal)
+    split = split_out_of_sample(bars, max(1, len(bars) // 2))
+    adjustment_result = run_backtest(split.adjustment, config, signal)
+    validation_result = run_backtest(split.validation, config, signal)
     response = result_payload(result)
     response["strategy"] = strategy_name
+    response["evaluation"] = {
+        "split_index": split.split_index,
+        "adjustment": result_payload(adjustment_result)["summary"],
+        "validation": result_payload(validation_result)["summary"],
+    }
     response["demo"] = {
         "source": "data/sample_ohlcv.csv",
         "notice": "Dados sintéticos autorizados apenas para demonstração; não representam histórico real.",
