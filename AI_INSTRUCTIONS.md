@@ -24,7 +24,8 @@ O TradeVenera é um projeto compartilhado do usuário. As IAs trabalham **sequen
 12. Quando a tarefa registrada estiver concluída, pare; não inicie automaticamente outra funcionalidade.
 13. Não revise repetidamente o que já foi concluído, não fique rodando em círculos e não repita explicações ou testes sem motivo objetivo.
 14. Não envie relatórios longos a cada ação nem gere PDFs, imagens ou outros materiais extras que não foram solicitados. Prefira atualizações curtas e objetivas.
-15. Trabalhe em partes relacionadas, salve checkpoints no GitHub, atualize o contexto e pare assim que a tarefa atual estiver concluída e verificada.
+15. Não revise repetidamente o que já foi concluído, não fique rodando em círculos e não repita explicações, análises ou testes sem motivo objetivo.
+16. Trabalhe por partes relacionadas, salve checkpoints no GitHub, atualize o contexto e pare assim que a tarefa atual estiver concluída e verificada; não inicie outro objetivo automaticamente.
 
 ## Regras do backtest
 

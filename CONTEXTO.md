@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: API HTTP mínima validada sobre o motor determinístico
+- Fase atual: documentação oficial centralizada e API HTTP mínima validada
 
 ## Objetivo atual
 
@@ -12,7 +12,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Organização documental
 
-`docs/DECISOES.md` e `docs/ESPECIFICACAO.md` são os únicos locais oficiais para decisões técnicas e especificação. Arquivos homônimos na raiz não devem ser recriados; referências futuras devem apontar para `docs/`.
+`docs/DECISOES.md` e `docs/ESPECIFICACAO.md` são os únicos locais oficiais para decisões técnicas e especificação. Não existem cópias desses arquivos na raiz; referências futuras devem apontar para `docs/`.
 
 ## Implementado atualmente
 
@@ -39,6 +39,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - A API aceita exclusivamente `data/sample_ohlcv.csv` e reutiliza o serializer schema `1`.
 - Testes de API criados em `tests/test_api.py`, incluindo rejeição de fonte não autorizada.
 - Configuração inicial de projeto Python no `pyproject.toml`.
+- Documentação oficial centralizada em `docs/DECISOES.md` e `docs/ESPECIFICACAO.md`, sem cópias concorrentes.
 
 ## Testado e funcionando
 
@@ -48,6 +49,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Fluxo home → `/configurar` validado no preview.
 - Suíte local executada em ambiente virtual: 19 testes aprovados.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
+- Limpeza documental verificada com `git ls-files` e busca de referências.
 
 ## Planejado, mas ainda não implementado
 
@@ -98,3 +100,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada API HTTP mínima com fonte de dados autorizada | 19 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Corrigida a lista de pendências e conectada a tela estática à API local, com loading, sucesso e erro | 4 testes direcionados + smoke test HTTP aprovados |
 | 02/09/2026 | IA Manus | Centralizada a documentação oficial em `docs/` e reforçadas as regras de continuidade | Limpeza estrutural verificada |
+| 02/09/2026 | IA Manus | Criada a especificação oficial ausente em `docs/` e corrigidas as referências documentais | Verificação estrutural e busca de referências |
