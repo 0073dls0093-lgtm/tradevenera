@@ -51,6 +51,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Home e painel de configuração redesenhados com referência visual de dashboard financeiro: fundo preto/grafite, roxo, âmbar, verde/vermelho, barra superior, filtros laterais, gráfico central e cards de desempenho.
 - Logotipo oficial recebido do usuário incorporado em `frontend/assets/logo.png` e usado nas duas telas estáticas.
 - Dashboard permite editar stop, alvo, comissão por contrato e slippage antes de executar a comparação demonstrativa.
+- Dashboard exibe a lista de operações retornadas pelo motor, com motivo de saída e resultado líquido por trade.
 
 ## Testado e funcionando
 
@@ -121,3 +122,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada comparação visual das estratégias demonstrativas | 27 testes aprovados; checkpoint publicado |
 | 02/09/2026 | IA Manus | Implementada política explícita de rolagem sintética e exibida na interface | 30 testes aprovados; checkpoint publicado |
 | 02/09/2026 | IA Manus | Expandidos parâmetros editáveis do dashboard de comparação | Testes Python preservados; layout validado |
+| 02/09/2026 | IA Manus | Adicionada tabela de operações sintéticas ao dashboard | 30 testes aprovados; checkpoint publicado |
