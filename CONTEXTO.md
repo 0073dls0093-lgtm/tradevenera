@@ -48,6 +48,8 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - API retorna resumos separados de ajuste e validação, e a interface os exibe junto do resultado total.
 - API e interface exibem comparação de operações e resultado líquido das duas estratégias disponíveis.
 - Políticas aceitas: `manual` e `continuous_adjusted`; ambas deixam explícito que não há ajuste real de contratos nesta versão.
+- Home e painel de configuração redesenhados com referência visual de dashboard financeiro: fundo preto/grafite, roxo, âmbar, verde/vermelho, barra superior, filtros laterais, gráfico central e cards de desempenho.
+- Logotipo oficial recebido do usuário incorporado em `frontend/assets/logo.png` e usado nas duas telas estáticas.
 
 ## Testado e funcionando
 
@@ -60,6 +62,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Limpeza documental verificada com `git ls-files` e busca de referências.
 - Suíte e smoke test HTTP executados após a inclusão do gráfico demonstrativo.
 - Suíte local: 27 testes aprovados; smoke test HTTP confirmou o campo `evaluation`.
+- Layout estático e ativo de logo validados; suíte Python preservada após a alteração visual.
 
 ## Planejado, mas ainda não implementado
 
