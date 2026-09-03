@@ -41,6 +41,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Configuração inicial de projeto Python no `pyproject.toml`.
 - Documentação oficial centralizada em `docs/DECISOES.md` e `docs/ESPECIFICACAO.md`, sem cópias concorrentes.
 - Adaptador sem dependências em `backend/settlements.py` para registros normalizados de preços de ajuste diários da B3; não converte esses registros em OHLCV.
+- API devolve candles da fixture e aviso explícito de demonstração; `frontend/configurar.html` renderiza um gráfico SVG com candles e marcações de entrada/saída.
 
 ## Testado e funcionando
 
@@ -51,19 +52,19 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Suíte local executada em ambiente virtual: 18 testes aprovados nesta versão.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 - Limpeza documental verificada com `git ls-files` e busca de referências.
+- Suíte e smoke test HTTP executados após a inclusão do gráfico demonstrativo.
 
 ## Planejado, mas ainda não implementado
 
 - Importar dados reais da B3 com granularidade adequada ao WIN.
 - Definir tratamento de vencimentos e rolagem dos contratos WIN.
-- Implementar gráfico real com candles e marcações de entrada e saída.
 - Adicionar a estratégia de máxima e mínima do dia anterior.
 - Adicionar validação fora da amostra.
 - Criar telas completas para comparação de estratégias.
 
 ## Dados e limitações
 
-- Fonte dos dados reais: a B3 publica arquivos públicos de derivativos diários, mas os termos do portal restringem reprodução, distribuição e disponibilização sem autorização expressa; o adaptador valida registros normalizados autorizados, e a API ainda aceita somente a fixture sintética.
+- Fonte dos dados reais: a B3 publica arquivos públicos de derivativos diários, mas os termos do portal restringem reprodução, distribuição e disponibilização sem autorização expressa. O Kaggle “Mini Index Futures (WIN) Dataset”, de Rafael G. Eder, declara CC BY-NC 4.0 e foi avaliado apenas como opção de protótipo não comercial; nenhum arquivo foi baixado ou versionado.
 - Granularidade: ainda não definida.
 - Não há dados de mercado versionados; nenhuma amostra real será adicionada sem licença compatível.
 - A home usa somente estados vazios e uma linha visual ilustrativa; não apresenta resultado financeiro real.
@@ -77,7 +78,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Obter autorização compatível ou um arquivo fornecido pelo usuário com licença de uso definida; depois validar o layout e o mapeamento do WIN antes de qualquer ingestão. Não usar fonte paga.
+- Implementar a estratégia de máxima e mínima do dia anterior usando exclusivamente a fixture sintética e criar testes causais; não iniciar ingestão Kaggle ou B3 sem necessidade e licença verificadas.
 
 ## Ideias sugeridas pela IA
 
@@ -105,3 +106,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Fixada a restrição de custo zero e escolhida a fonte pública da B3 para a primeira integração | Documentação atualizada; sem importação |
 | 02/09/2026 | IA Manus | Criado adaptador independente para liquidações diárias normalizadas da B3 | 18 testes aprovados; sem dados reais versionados |
 | 02/09/2026 | IA Manus | Avaliados arquivos públicos e termos da B3; bloqueado o versionamento sem autorização específica | Pesquisa documental; nenhum download ou dado real incorporado |
+| 02/09/2026 | IA Manus | Avaliado o dataset Kaggle WIN sob CC BY-NC 4.0, sem download ou cópia | Página do dataset e licença Creative Commons consultadas |

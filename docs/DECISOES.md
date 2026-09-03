@@ -52,6 +52,16 @@
 
 **Impacto:** a fonte B3 continua documentada como referência gratuita para pesquisa e futura ingestão autorizada, mas não é usada como fonte operacional do site nesta etapa. O TradeVenera continua sem dados reais versionados e sem candles OHLCV reais. Para avançar, será necessário obter autorização compatível ou receber do usuário um arquivo cuja licença permita o uso pretendido; não será adotada fonte paga.
 
+## 02/09/2026 — Dataset Kaggle para protótipo não comercial
+
+**Decisão:** avaliar o dataset [Mini Index Futures (WIN) Dataset](https://www.kaggle.com/datasets/rafaelgeder/mini-index-futures-win-dataset), de Rafael G. Eder, como fonte opcional para desenvolvimento e protótipo não comercial. Nesta etapa, nenhum arquivo foi baixado ou copiado para o repositório.
+
+**Escopo e atribuição:** a página do dataset declara candles de contratos WIN em arquivos nomeados por contrato e intervalo, com colunas `CANDLE`, `OPEN`, `HIGH`, `LOW`, `CLOSE`, `VFIN` e `VNEG`. A atribuição mínima deve mencionar “Mini Index Futures (WIN) Dataset — Rafael G. Eder”, incluir o link do dataset e a licença [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), além de indicar alterações eventualmente feitas.
+
+**Licença e limites:** a CC BY-NC 4.0 permite compartilhar e adaptar o material desde que haja atribuição e não haja uso comercial. O dataset não é dado oficial da B3; sua cobertura, qualidade, metodologia, completude, timezone, custos, slippage e tratamento de vencimentos precisam ser verificados antes de qualquer backtest. A licença declarada pelo autor também não autoriza presumir redistribuição em um produto comercial ou site público com finalidade comercial.
+
+**Impacto:** o dataset pode ser usado apenas em ambiente e protótipo não comercial enquanto a licença for respeitada. Não será versionado um arquivo grande; se uma amostra pequena for necessária, ela deverá ser mínima, ter atribuição e licença registradas e ser claramente rotulada como demonstração. A fixture sintética continua sendo a fonte padrão do site.
+
 ## 02/09/2026 — Contrato de domínio sem dependências externas
 
 **Decisão:** representar OHLCV e configuração de backtest com dataclasses Python e validação explícita, antes de escolher provedor de dados ou framework de execução.
