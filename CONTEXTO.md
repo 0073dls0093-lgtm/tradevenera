@@ -50,6 +50,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Políticas aceitas: `manual` e `continuous_adjusted`; ambas deixam explícito que não há ajuste real de contratos nesta versão.
 - Home e painel de configuração redesenhados com referência visual de dashboard financeiro: fundo preto/grafite, roxo, âmbar, verde/vermelho, barra superior, filtros laterais, gráfico central e cards de desempenho.
 - Logotipo oficial recebido do usuário incorporado em `frontend/assets/logo.png` e usado nas duas telas estáticas.
+- Dashboard permite editar stop, alvo, comissão por contrato e slippage antes de executar a comparação demonstrativa.
 
 ## Testado e funcionando
 
@@ -84,7 +85,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Criar telas completas para comparação de estratégias com mais parâmetros de estudo.
+- Importar dados reais da B3 com granularidade adequada ao WIN.
 
 ## Ideias sugeridas pela IA
 
@@ -119,3 +120,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Integrados resultados de ajuste e validação na API e na interface | 27 testes aprovados + smoke HTTP; checkpoint pendente nesta linha |
 | 02/09/2026 | IA Manus | Criada comparação visual das estratégias demonstrativas | 27 testes aprovados; checkpoint publicado |
 | 02/09/2026 | IA Manus | Implementada política explícita de rolagem sintética e exibida na interface | 30 testes aprovados; checkpoint publicado |
+| 02/09/2026 | IA Manus | Expandidos parâmetros editáveis do dashboard de comparação | Testes Python preservados; layout validado |
