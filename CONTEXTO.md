@@ -63,9 +63,9 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Dados e limitações
 
-- Fonte dos dados reais: dados históricos públicos da B3 foram escolhidos como fonte gratuita inicial para derivativos diários, especialmente preços de ajuste; o adaptador valida registros normalizados, e a API ainda aceita somente a fixture sintética autorizada.
+- Fonte dos dados reais: a B3 publica arquivos públicos de derivativos diários, mas os termos do portal restringem reprodução, distribuição e disponibilização sem autorização expressa; o adaptador valida registros normalizados autorizados, e a API ainda aceita somente a fixture sintética.
 - Granularidade: ainda não definida.
-- Não há dados de mercado versionados.
+- Não há dados de mercado versionados; nenhuma amostra real será adicionada sem licença compatível.
 - A home usa somente estados vazios e uma linha visual ilustrativa; não apresenta resultado financeiro real.
 - Contrato, vencimento, custos e política de rolagem ainda precisam ser definidos antes de resultados financeiros serem calculados.
 
@@ -77,7 +77,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Importar uma amostra real pública da B3 somente após validar o formato de download, o mapeamento do contrato WIN e os termos de uso; manter a amostra fora do versionamento até essa confirmação.
+- Obter autorização compatível ou um arquivo fornecido pelo usuário com licença de uso definida; depois validar o layout e o mapeamento do WIN antes de qualquer ingestão. Não usar fonte paga.
 
 ## Ideias sugeridas pela IA
 
@@ -104,3 +104,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Documentada a B3 como fonte candidata para derivativos diários, sem importação | Referências oficiais consultadas; implementação não alterada |
 | 02/09/2026 | IA Manus | Fixada a restrição de custo zero e escolhida a fonte pública da B3 para a primeira integração | Documentação atualizada; sem importação |
 | 02/09/2026 | IA Manus | Criado adaptador independente para liquidações diárias normalizadas da B3 | 18 testes aprovados; sem dados reais versionados |
+| 02/09/2026 | IA Manus | Avaliados arquivos públicos e termos da B3; bloqueado o versionamento sem autorização específica | Pesquisa documental; nenhum download ou dado real incorporado |

@@ -44,6 +44,14 @@
 
 **Impacto:** ficam fora do escopo as fontes comerciais e qualquer integração que exija pagamento. Nenhum dado real foi importado nesta etapa; a API continua aceitando somente a fixture sintética autorizada. A próxima implementação deverá começar por um adaptador reprodutível para dados diários da B3, com validação de formato, contrato, vencimento, datas, completude e licença.
 
+## 02/09/2026 — Bloqueio de versionamento e redistribuição de dados da B3
+
+**Decisão:** não baixar, versionar, redistribuir ou disponibilizar no TradeVenera uma amostra real extraída do portal da B3 sem confirmação específica de autorização. O adaptador de liquidações permanece somente como leitor de um formato normalizado fornecido de forma autorizada.
+
+**Motivo:** a página pública de pesquisa por pregão confirma a existência de arquivos diários de derivativos, incluindo o boletim simplificado de preços de derivativos (`BVBG.187.01`). Porém, os termos de uso do portal informam que os dados são para uso pessoal e restringem reprodução, publicação, distribuição e disponibilização de acesso sem autorização prévia e expressa. A página consultada também não expõe, no conteúdo acessível automaticamente, um layout estável suficiente para confirmar o mapeamento completo do arquivo ao WIN.
+
+**Impacto:** a fonte B3 continua documentada como referência gratuita para pesquisa e futura ingestão autorizada, mas não é usada como fonte operacional do site nesta etapa. O TradeVenera continua sem dados reais versionados e sem candles OHLCV reais. Para avançar, será necessário obter autorização compatível ou receber do usuário um arquivo cuja licença permita o uso pretendido; não será adotada fonte paga.
+
 ## 02/09/2026 — Contrato de domínio sem dependências externas
 
 **Decisão:** representar OHLCV e configuração de backtest com dataclasses Python e validação explícita, antes de escolher provedor de dados ou framework de execução.
