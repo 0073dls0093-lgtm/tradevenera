@@ -6,6 +6,8 @@ Antes de trabalhar, leia `CONTEXTO.md`, `README.md` e os arquivos diretamente re
 
 O TradeVenera é um projeto compartilhado do usuário. As IAs trabalham **sequencialmente**: somente uma IA deve editar o repositório por vez. Ao terminar uma etapa, registre no GitHub o que foi feito, os testes executados, problemas conhecidos, a próxima tarefa e ideias aguardando decisão. A IA seguinte deve consultar esses arquivos e continuar sem depender desta conversa.
 
+`docs/DECISOES.md` e `docs/ESPECIFICACAO.md` são os únicos locais oficiais desses documentos. Não criar cópias na raiz nem manter referências ambíguas.
+
 ## Regras de trabalho
 
 1. Analise somente os arquivos necessários para a tarefa.
@@ -20,6 +22,9 @@ O TradeVenera é um projeto compartilhado do usuário. As IAs trabalham **sequen
 10. Diferencie fatos implementados, itens planejados e hipóteses.
 11. Trabalhe por partes relacionadas: implemente, verifique e documente cada avanço relevante antes de continuar.
 12. Quando a tarefa registrada estiver concluída, pare; não inicie automaticamente outra funcionalidade.
+13. Não revise repetidamente o que já foi concluído, não fique rodando em círculos e não repita explicações ou testes sem motivo objetivo.
+14. Não envie relatórios longos a cada ação nem gere PDFs, imagens ou outros materiais extras que não foram solicitados. Prefira atualizações curtas e objetivas.
+15. Trabalhe em partes relacionadas, salve checkpoints no GitHub, atualize o contexto e pare assim que a tarefa atual estiver concluída e verificada.
 
 ## Regras do backtest
 

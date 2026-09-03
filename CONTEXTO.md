@@ -10,6 +10,10 @@
 
 Estabelecer uma base documentada e segura para uma aplicação educativa de backtesting histórico de estratégias, começando por ativos da B3 e sem execução de ordens reais.
 
+## Organização documental
+
+`docs/DECISOES.md` e `docs/ESPECIFICACAO.md` são os únicos locais oficiais para decisões técnicas e especificação. Arquivos homônimos na raiz não devem ser recriados; referências futuras devem apontar para `docs/`.
+
 ## Implementado atualmente
 
 - Estrutura inicial de diretórios e documentação de continuidade.
@@ -93,3 +97,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criado contrato JSON versionado para resultados do backtest | 17 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Criada API HTTP mínima com fonte de dados autorizada | 19 testes aprovados com pytest |
 | 02/09/2026 | IA Manus | Corrigida a lista de pendências e conectada a tela estática à API local, com loading, sucesso e erro | 4 testes direcionados + smoke test HTTP aprovados |
+| 02/09/2026 | IA Manus | Centralizada a documentação oficial em `docs/` e reforçadas as regras de continuidade | Limpeza estrutural verificada |

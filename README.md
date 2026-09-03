@@ -12,8 +12,8 @@ A fundação documental, a home visual, a tela de configuração, o domínio de 
 
 - `CONTEXTO.md`: estado factual do projeto e próxima tarefa.
 - `AI_INSTRUCTIONS.md`: regras para agentes e colaboradores sequenciais.
-- `docs/ESPECIFICACAO.md`: escopo e requisitos da primeira versão.
-- `docs/DECISOES.md`: decisões técnicas registradas.
+- `docs/ESPECIFICACAO.md`: único local oficial do escopo e requisitos da primeira versão.
+- `docs/DECISOES.md`: único local oficial das decisões técnicas registradas.
 - `frontend/index.html`: primeira entrega visual estática.
 - `frontend/configurar.html`: tela estática de configuração conectada à API local.
 - `backend/`: domínio, executor, fixture, serializer e API HTTP.
