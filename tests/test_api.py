@@ -27,3 +27,14 @@ def test_api_rejects_any_data_source_outside_authorized_fixture():
     payload = {**PAYLOAD, "data_source": "data/other.csv"}
     with pytest.raises(ValueError, match="somente"):
         execute_backtest(payload)
+
+
+def test_api_accepts_previous_day_high_strategy():
+    response = execute_backtest({**PAYLOAD, "strategy": "previous_day_high"})
+    assert response["strategy"] == "previous_day_high"
+    assert response["summary"]["trades"] == 0
+
+
+def test_api_rejects_unknown_strategy():
+    with pytest.raises(ValueError, match="não suportada"):
+        execute_backtest({**PAYLOAD, "strategy": "future_prediction"})

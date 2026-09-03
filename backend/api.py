@@ -8,7 +8,7 @@ from .backtest import run_backtest
 from .configuration import build_config
 from .fixture import load_ohlcv_csv
 from .serialization import result_payload
-from .strategies import moving_average_cross_signal
+from .strategies import moving_average_cross_signal, previous_day_high_breakout_signal
 
 ROOT = Path(__file__).parents[1]
 ALLOWED_FIXTURE = (ROOT / "data" / "sample_ohlcv.csv").resolve()
@@ -22,12 +22,16 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("esta API inicial aceita somente data/sample_ohlcv.csv")
     config = build_config(payload)
     bars = load_ohlcv_csv(requested)
-    result = run_backtest(
-        bars,
-        config,
-        lambda index, history: moving_average_cross_signal(index, history, fast=2, slow=3),
-    )
+    strategy_name = (payload.get("strategy") or "moving_average").strip()
+    if strategy_name == "moving_average":
+        signal = lambda index, history: moving_average_cross_signal(index, history, fast=2, slow=3)
+    elif strategy_name == "previous_day_high":
+        signal = previous_day_high_breakout_signal
+    else:
+        raise ValueError("estratégia não suportada; use moving_average ou previous_day_high")
+    result = run_backtest(bars, config, signal)
     response = result_payload(result)
+    response["strategy"] = strategy_name
     response["demo"] = {
         "source": "data/sample_ohlcv.csv",
         "notice": "Dados sintéticos autorizados apenas para demonstração; não representam histórico real.",
