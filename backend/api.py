@@ -10,6 +10,7 @@ from .fixture import load_ohlcv_csv
 from .serialization import result_payload
 from .strategies import moving_average_cross_signal, previous_day_high_breakout_signal
 from .validation import split_out_of_sample
+from .rollover import describe_rollover
 
 ROOT = Path(__file__).parents[1]
 ALLOWED_FIXTURE = (ROOT / "data" / "sample_ohlcv.csv").resolve()
@@ -39,6 +40,7 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
         comparison[name] = result_payload(run_backtest(bars, config, candidate))["summary"]
     response = result_payload(result)
     response["strategy"] = strategy_name
+    response["rollover"] = describe_rollover(config.rollover_rule)
     response["evaluation"] = {
         "split_index": split.split_index,
         "adjustment": result_payload(adjustment_result)["summary"],

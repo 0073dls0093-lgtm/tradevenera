@@ -3,6 +3,7 @@ from datetime import date, time
 from typing import Mapping
 
 from .domain import BacktestConfig, OrderType, SameCandlePolicy, ValidationError
+from .rollover import validate_rollover_rule
 
 
 def _required(values: Mapping[str, str], key: str) -> str:
@@ -49,4 +50,5 @@ def build_config(values: Mapping[str, str]) -> BacktestConfig:
         same_candle_policy=policy, rollover_rule=_required(values, "rollover_rule"), data_source=_required(values, "data_source"),
     )
     config.ensure_valid()
+    validate_rollover_rule(config.rollover_rule)
     return config

@@ -26,6 +26,7 @@ def test_api_executes_authorized_fixture_and_returns_schema_one():
     assert "net_result" in response["evaluation"]["validation"]
     assert set(response["comparison"]) == {"moving_average", "previous_day_high"}
     assert response["comparison"]["moving_average"]["trades"] == 1
+    assert "Contrato único" in response["rollover"]
 
 
 def test_api_rejects_any_data_source_outside_authorized_fixture():
