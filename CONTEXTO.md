@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: comparação demonstrativa de estratégias integrada e API HTTP validada
+- Fase atual: política de rolagem sintética integrada e API HTTP validada
 
 ## Objetivo atual
 
@@ -47,6 +47,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Utilitário `backend/validation.py` separa períodos de ajuste e validação fora da amostra sem sobreposição.
 - API retorna resumos separados de ajuste e validação, e a interface os exibe junto do resultado total.
 - API e interface exibem comparação de operações e resultado líquido das duas estratégias disponíveis.
+- Políticas aceitas: `manual` e `continuous_adjusted`; ambas deixam explícito que não há ajuste real de contratos nesta versão.
 
 ## Testado e funcionando
 
@@ -63,7 +64,6 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 ## Planejado, mas ainda não implementado
 
 - Importar dados reais da B3 com granularidade adequada ao WIN.
-- Definir tratamento de vencimentos e rolagem dos contratos WIN.
 
 ## Dados e limitações
 
@@ -81,7 +81,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Definir tratamento de vencimentos e rolagem dos contratos WIN usando somente dados sintéticos até existir fonte licenciada.
+- Criar telas completas para comparação de estratégias com mais parâmetros de estudo.
 
 ## Ideias sugeridas pela IA
 
@@ -115,3 +115,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criada separação contígua e sem sobreposição para validação fora da amostra | 27 testes aprovados; checkpoint publicado |
 | 02/09/2026 | IA Manus | Integrados resultados de ajuste e validação na API e na interface | 27 testes aprovados + smoke HTTP; checkpoint pendente nesta linha |
 | 02/09/2026 | IA Manus | Criada comparação visual das estratégias demonstrativas | 27 testes aprovados; checkpoint publicado |
+| 02/09/2026 | IA Manus | Implementada política explícita de rolagem sintética e exibida na interface | 30 testes aprovados; checkpoint publicado |
