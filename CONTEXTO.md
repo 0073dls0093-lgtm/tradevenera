@@ -44,6 +44,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - API devolve candles da fixture e aviso explícito de demonstração; `frontend/configurar.html` renderiza um gráfico SVG com candles e marcações de entrada/saída.
 - Estratégia causal `previous_day_high_breakout_signal` adicionada: usa somente máximas de dias anteriores e rompe pelo fechamento atual.
 - API e interface permitem selecionar explicitamente `moving_average` ou `previous_day_high` no modo demonstração.
+- Utilitário `backend/validation.py` separa períodos de ajuste e validação fora da amostra sem sobreposição.
 
 ## Testado e funcionando
 
@@ -51,7 +52,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
-- Suíte local executada em ambiente virtual: 22 testes aprovados nesta versão.
+- Suíte local executada em ambiente virtual: 27 testes aprovados nesta versão.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 - Limpeza documental verificada com `git ls-files` e busca de referências.
 - Suíte e smoke test HTTP executados após a inclusão do gráfico demonstrativo.
@@ -60,7 +61,6 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 - Importar dados reais da B3 com granularidade adequada ao WIN.
 - Definir tratamento de vencimentos e rolagem dos contratos WIN.
-- Adicionar validação fora da amostra.
 - Criar telas completas para comparação de estratégias.
 
 ## Dados e limitações
@@ -79,7 +79,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Adicionar validação fora da amostra usando a fixture sintética, mantendo períodos de ajuste e validação separados.
+- Integrar a separação de ajuste/validação ao fluxo de execução e exibir os dois resultados na interface demonstrativa.
 
 ## Ideias sugeridas pela IA
 
@@ -110,3 +110,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Avaliado o dataset Kaggle WIN sob CC BY-NC 4.0, sem download ou cópia | Página do dataset e licença Creative Commons consultadas |
 | 02/09/2026 | IA Manus | Adicionada estratégia causal de rompimento da máxima do dia anterior | 20 testes aprovados; somente fixture sintética |
 | 02/09/2026 | IA Manus | Integrada seleção explícita de estratégia na API e interface | 22 testes aprovados; checkpoint publicado |
+| 02/09/2026 | IA Manus | Criada separação contígua e sem sobreposição para validação fora da amostra | 27 testes aprovados; checkpoint publicado |
