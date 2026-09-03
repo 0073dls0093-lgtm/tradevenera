@@ -42,6 +42,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Documentação oficial centralizada em `docs/DECISOES.md` e `docs/ESPECIFICACAO.md`, sem cópias concorrentes.
 - Adaptador sem dependências em `backend/settlements.py` para registros normalizados de preços de ajuste diários da B3; não converte esses registros em OHLCV.
 - API devolve candles da fixture e aviso explícito de demonstração; `frontend/configurar.html` renderiza um gráfico SVG com candles e marcações de entrada/saída.
+- Estratégia causal `previous_day_high_breakout_signal` adicionada: usa somente máximas de dias anteriores e rompe pelo fechamento atual.
 
 ## Testado e funcionando
 
@@ -49,7 +50,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 - Preview React do WebDev executado sem erros de TypeScript ou LSP.
 - Home visual validada por screenshot no preview.
 - Fluxo home → `/configurar` validado no preview.
-- Suíte local executada em ambiente virtual: 18 testes aprovados nesta versão.
+- Suíte local executada em ambiente virtual: 20 testes aprovados nesta versão.
 - Arquivo estático principal validado localmente quanto à existência e conteúdo.
 - Limpeza documental verificada com `git ls-files` e busca de referências.
 - Suíte e smoke test HTTP executados após a inclusão do gráfico demonstrativo.
@@ -58,7 +59,6 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 - Importar dados reais da B3 com granularidade adequada ao WIN.
 - Definir tratamento de vencimentos e rolagem dos contratos WIN.
-- Adicionar a estratégia de máxima e mínima do dia anterior.
 - Adicionar validação fora da amostra.
 - Criar telas completas para comparação de estratégias.
 
@@ -78,7 +78,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Implementar a estratégia de máxima e mínima do dia anterior usando exclusivamente a fixture sintética e criar testes causais; não iniciar ingestão Kaggle ou B3 sem necessidade e licença verificadas.
+- Integrar seleção explícita de estratégia na API/interface e adicionar validação fora da amostra usando fixture sintética; não iniciar ingestão Kaggle ou B3 sem necessidade e licença verificadas.
 
 ## Ideias sugeridas pela IA
 
@@ -107,3 +107,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Criado adaptador independente para liquidações diárias normalizadas da B3 | 18 testes aprovados; sem dados reais versionados |
 | 02/09/2026 | IA Manus | Avaliados arquivos públicos e termos da B3; bloqueado o versionamento sem autorização específica | Pesquisa documental; nenhum download ou dado real incorporado |
 | 02/09/2026 | IA Manus | Avaliado o dataset Kaggle WIN sob CC BY-NC 4.0, sem download ou cópia | Página do dataset e licença Creative Commons consultadas |
+| 02/09/2026 | IA Manus | Adicionada estratégia causal de rompimento da máxima do dia anterior | 20 testes aprovados; somente fixture sintética |
