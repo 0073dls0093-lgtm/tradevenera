@@ -27,7 +27,22 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
         config,
         lambda index, history: moving_average_cross_signal(index, history, fast=2, slow=3),
     )
-    return result_payload(result)
+    response = result_payload(result)
+    response["demo"] = {
+        "source": "data/sample_ohlcv.csv",
+        "notice": "Dados sintéticos autorizados apenas para demonstração; não representam histórico real.",
+        "bars": [
+            {
+                "timestamp": bar.timestamp.isoformat(),
+                "open": bar.open,
+                "high": bar.high,
+                "low": bar.low,
+                "close": bar.close,
+            }
+            for bar in bars
+        ],
+    }
+    return response
 
 
 class BacktestHandler(BaseHTTPRequestHandler):
