@@ -34,6 +34,9 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
     split = split_out_of_sample(bars, max(1, len(bars) // 2))
     adjustment_result = run_backtest(split.adjustment, config, signal)
     validation_result = run_backtest(split.validation, config, signal)
+    comparison = {}
+    for name, candidate in (("moving_average", lambda i, h: moving_average_cross_signal(i, h, fast=2, slow=3)), ("previous_day_high", previous_day_high_breakout_signal)):
+        comparison[name] = result_payload(run_backtest(bars, config, candidate))["summary"]
     response = result_payload(result)
     response["strategy"] = strategy_name
     response["evaluation"] = {
@@ -41,6 +44,7 @@ def execute_backtest(payload: dict[str, Any]) -> dict[str, Any]:
         "adjustment": result_payload(adjustment_result)["summary"],
         "validation": result_payload(validation_result)["summary"],
     }
+    response["comparison"] = comparison
     response["demo"] = {
         "source": "data/sample_ohlcv.csv",
         "notice": "Dados sintéticos autorizados apenas para demonstração; não representam histórico real.",
