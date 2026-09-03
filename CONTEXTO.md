@@ -4,7 +4,7 @@
 
 - Data: 02/09/2026
 - Responsável: IA Manus
-- Fase atual: documentação oficial centralizada e API HTTP mínima validada
+- Fase atual: fonte autorizada inicial documentada e API HTTP mínima validada
 
 ## Objetivo atual
 
@@ -53,7 +53,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Planejado, mas ainda não implementado
 
-- Escolher e documentar uma fonte autorizada de dados reais.
+- Definir se a primeira integração real será diária, baseada em preços de ajuste da B3, ou intradiária, baseada em distribuidor autorizado/arquivo licenciado para o WIN.
 - Importar dados reais da B3 com granularidade adequada ao WIN.
 - Definir tratamento de vencimentos e rolagem dos contratos WIN.
 - Implementar gráfico real com candles e marcações de entrada e saída.
@@ -63,7 +63,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Dados e limitações
 
-- Fonte dos dados reais: ainda não definida; a API atual aceita somente a fixture sintética autorizada.
+- Fonte dos dados reais: dados históricos oficiais da B3 foram documentados como fonte candidata para derivativos diários, especialmente preços de ajuste; a API atual aceita somente a fixture sintética autorizada.
 - Granularidade: ainda não definida.
 - Não há dados de mercado versionados.
 - A home usa somente estados vazios e uma linha visual ilustrativa; não apresenta resultado financeiro real.
@@ -77,7 +77,7 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 
 ## Próxima tarefa sugerida
 
-- Escolher e documentar uma fonte autorizada de dados reais, sem implementá-la automaticamente.
+- Avaliar fonte autorizada para dados reais; concluído de forma limitada: B3 oficial é candidata para dados diários de derivativos, mas não foi considerada suficiente para candles intradiários do WIN.
 
 ## Ideias sugeridas pela IA
 
@@ -101,3 +101,4 @@ Estabelecer uma base documentada e segura para uma aplicação educativa de back
 | 02/09/2026 | IA Manus | Corrigida a lista de pendências e conectada a tela estática à API local, com loading, sucesso e erro | 4 testes direcionados + smoke test HTTP aprovados |
 | 02/09/2026 | IA Manus | Centralizada a documentação oficial em `docs/` e reforçadas as regras de continuidade | Limpeza estrutural verificada |
 | 02/09/2026 | IA Manus | Criada a especificação oficial ausente em `docs/` e corrigidas as referências documentais | Verificação estrutural e busca de referências |
+| 02/09/2026 | IA Manus | Documentada a B3 como fonte candidata para derivativos diários, sem importação | Referências oficiais consultadas; implementação não alterada |

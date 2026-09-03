@@ -26,6 +26,16 @@
 
 **Impacto:** a tela `/configurar` usa apenas estado local no preview; a validação real e a persistência ficam bloqueadas até o modelo OHLCV e o motor determinístico serem definidos.
 
+## 02/09/2026 — Fonte oficial inicial limitada a dados diários de derivativos
+
+**Decisão:** adotar os dados históricos publicados pela B3 como fonte autorizada candidata para uma futura integração de dados diários de derivativos, especialmente preços de ajuste e resumo estatístico. Não considerar essa fonte, neste momento, suficiente para histórico intradiário OHLCV do WIN.
+
+**Motivo:** a página oficial de dados históricos da B3 disponibiliza uma seção de derivativos com preços de ajuste e resumo estatístico, enquanto a plataforma de market data informa que cotações de mercado são distribuídas por distribuidores autorizados. A documentação do pacote `rb3` confirma que seu template de futuros trata preços de ajuste, não candles intradiários. Portanto, usar esses dados como se fossem candles intradiários produziria uma representação inadequada do produto.
+
+**Alternativas consideradas:** contratar ou integrar um distribuidor autorizado que forneça histórico intradiário do WIN; aceitar um arquivo fornecido pelo usuário com licença e contrato comprovados; ou começar somente com dados diários de ajuste. A escolha entre essas alternativas depende de granularidade necessária, licença, custo e política de vencimento/rolagem.
+
+**Impacto:** nenhuma importação foi implementada. A fixture sintética continua sendo a única fonte aceita pela API. Antes de aceitar dados reais, será necessário confirmar contrato e vencimento, período, timeframe, horário, formato OHLCV, completude, licença, custos, slippage e política de rolagem. Referências consultadas: [dados históricos da B3](https://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/historical-data/), [plataforma de market data da B3](https://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/market-data-platform/) e [documentação do rb3](https://docs.ropensci.org/rb3/).
+
 ## 02/09/2026 — Contrato de domínio sem dependências externas
 
 **Decisão:** representar OHLCV e configuração de backtest com dataclasses Python e validação explícita, antes de escolher provedor de dados ou framework de execução.
