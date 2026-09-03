@@ -36,6 +36,14 @@
 
 **Impacto:** nenhuma importação foi implementada. A fixture sintética continua sendo a única fonte aceita pela API. Antes de aceitar dados reais, será necessário confirmar contrato e vencimento, período, timeframe, horário, formato OHLCV, completude, licença, custos, slippage e política de rolagem. Referências consultadas: [dados históricos da B3](https://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/historical-data/), [plataforma de market data da B3](https://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/market-data-platform/) e [documentação do rb3](https://docs.ropensci.org/rb3/).
 
+## 02/09/2026 — Restrição de custo zero e primeira fonte pública
+
+**Decisão:** o TradeVenera não terá dependências pagas, assinaturas, APIs premium ou contratação de distribuidores. A primeira integração real, quando iniciada, deverá usar exclusivamente os dados históricos publicamente disponibilizados pela B3 para derivativos diários, começando por preços de ajuste e resumo estatístico.
+
+**Motivo:** a restrição de custo zero foi definida pelo usuário. A B3 mantém uma página pública de dados históricos com seção de derivativos; essa opção permite validar o pipeline sem cobrança. Ela não deve ser tratada como fonte de candles intradiários do WIN, e a disponibilidade pública não elimina a necessidade de confirmar os termos de uso antes de redistribuir ou versionar dados.
+
+**Impacto:** ficam fora do escopo as fontes comerciais e qualquer integração que exija pagamento. Nenhum dado real foi importado nesta etapa; a API continua aceitando somente a fixture sintética autorizada. A próxima implementação deverá começar por um adaptador reprodutível para dados diários da B3, com validação de formato, contrato, vencimento, datas, completude e licença.
+
 ## 02/09/2026 — Contrato de domínio sem dependências externas
 
 **Decisão:** representar OHLCV e configuração de backtest com dataclasses Python e validação explícita, antes de escolher provedor de dados ou framework de execução.
